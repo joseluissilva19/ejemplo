@@ -21,18 +21,11 @@ Route::get('/inicio', function () {
 
 Route::resource('/materia', 'MateriaController');
 
+Route::resource('/alumno', 'AlumnoController'):
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/materias', 'MateriaController@index');
 
-Route::get('/dependencia', 'DependenciaController@index');
 
-Route::get('/materia/create', function(){
-  return view('materias.formMateria');
-});
-
-Route::get('/materia/show', function(){
-  return view('materias.showMateria');
-});

@@ -14,7 +14,8 @@ class MateriaController extends Controller
      */
     public function index()
     {
-        return view('materias.indexMateria');
+        $materias = Materia::all();
+        return view('materias.indexMateria', compact('materias'));
     }
 
     /**
@@ -24,7 +25,7 @@ class MateriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('materias.formMateria');
     }
 
     /**
@@ -33,9 +34,17 @@ class MateriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $reques)
+    public function store(Request $request)
     {
-        dd($reques->all());
+        Materia::create($request->all());
+        /*$materia = new Materia();
+        $materia->materia = $request->input('materia');
+        $materia->nrc = $request->input('nrc');
+        $materia->seccion = $request->input('seccion');
+        $materia->horario = $request->input('horario');
+        $materia->save();*/
+      
+        return redirect()->route('materia.index');
     }
 
     /**
